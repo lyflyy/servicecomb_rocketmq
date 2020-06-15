@@ -1,0 +1,28 @@
+spring:
+  main:
+    web-application: true
+    
+servicecomb-config-order: 1
+
+APPLICATION_ID: mall-application
+service_description:
+  version: 0.0.1
+  name: mall-gateway
+  environment: development
+  
+servicecomb:
+  service:
+    registry:
+      address: http://localhost:30100
+      instance:
+        watch: false
+        
+  request:
+    timeout: 100000
+    
+  rest:
+    address: 0.0.0.0:9090?sslEnabled=false
+    
+# This is web root for windows server, change this path according to where you put your source code
+gateway:
+  webroot: var/static/ui
