@@ -2,6 +2,7 @@ package com.uyibai.servicecomb.mall;
 
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +15,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConsumerReceive {
 	
+	@Autowired
+	private CartService cartService;
+	
 	@StreamListener("mall-cart-group")
 	public void receiveConsumer(String receiveMsg) {
-		System.out.println("mall-cart-group receive: " + receiveMsg);
+		System.out.println("接收到mall-cart-group消息：" + receiveMsg);
+		cartService.clear();
+		System.out.println("清空购物车！");
 	}
 	
 	

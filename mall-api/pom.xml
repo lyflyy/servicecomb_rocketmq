@@ -23,12 +23,18 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <artifactId>mall-api-entity</artifactId>
-            <groupId>com.uyibai.servicecomb</groupId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <artifactId>mall-api-entity</artifactId>
+                <groupId>com.uyibai.servicecomb</groupId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>

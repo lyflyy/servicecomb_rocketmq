@@ -12,6 +12,11 @@
     <artifactId>mall-api-comsumer</artifactId>
 
     <dependencies>
+        <dependency>
+            <artifactId>mall-api-entity</artifactId>
+            <groupId>com.uyibai.servicecomb</groupId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

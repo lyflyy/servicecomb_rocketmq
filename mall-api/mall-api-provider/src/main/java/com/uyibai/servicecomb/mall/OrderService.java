@@ -8,6 +8,6 @@ package com.uyibai.servicecomb.mall;
  **/
 public interface OrderService {
 	
-	String pay();
+	String pay(Integer num);
 	
 }

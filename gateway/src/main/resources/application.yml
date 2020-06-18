@@ -1,15 +1,15 @@
-spring:
-  main:
-    web-application: true
-    
-servicecomb-config-order: 1
+servicecomb-config-order: 10
+
+server:
+  port: 9090  # should be same with servicecomb.rest.address to use web container
+
 
 APPLICATION_ID: mall-application
 service_description:
-  version: 0.0.1
+  version: 0.0.2
   name: mall-gateway
-  environment: development
-  
+#  environment: development
+
 servicecomb:
   service:
     registry:

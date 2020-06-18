@@ -1,6 +1,5 @@
 package com.uyibai.servicecomb.mall;
 
-import com.alibaba.fastjson.JSON;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
@@ -20,9 +19,10 @@ public class OrderServiceImpl implements OrderService{
 	private OrderProduce cartProduce;
 	
 	@Override
-	public String pay() {
+	public String pay(Integer num) {
 		MessageBuilder builder = MessageBuilder.withPayload("pay success")
 				.setHeader(RocketMQHeaders.TAGS, "cart-tag")
+				.setHeader("TRANSACTION_FLAG", num)
 				.setHeader(RocketMQHeaders.KEYS, "mall-cart-pay-key")
 				.setHeader("DELAY", "1")
 				;

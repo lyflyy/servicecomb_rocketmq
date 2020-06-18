@@ -9,18 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mall-endpoint-provider</artifactId>
+    <artifactId>mall-endpoint-api-consumer</artifactId>
+
 
     <dependencies>
         <dependency>
-            <artifactId>mall-endpoint-api-provider</artifactId>
-            <groupId>com.uyibai.servicecomb</groupId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <artifactId>mall-endpoint-api-consumer</artifactId>
+            <artifactId>mall-api-comsumer</artifactId>
             <groupId>com.uyibai.servicecomb</groupId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
 </project>

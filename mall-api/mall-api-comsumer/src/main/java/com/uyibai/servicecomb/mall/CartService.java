@@ -10,8 +10,26 @@ import java.util.List;
  **/
 public interface CartService {
 	
-	Cart add(String obj);
 	
+	/**
+	 * 购物车中添加商品，返回当前购物车中所有商品
+	 * @param obj
+	 * @return
+	 */
+	List<Cart> add(String obj);
+	
+	
+	/**
+	 * 查询购物车
+	 * @return
+	 */
 	List<Cart> list();
+	
+	
+	/**
+	 * 支付成功清空购物车
+	 * @return
+	 */
+	List<Cart> clear();
 	
 }

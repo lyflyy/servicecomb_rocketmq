@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <artifactId>mall-api-comsumer</artifactId>
+            <artifactId>mall-endpoint-api-consumer</artifactId>
             <groupId>com.uyibai.servicecomb</groupId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

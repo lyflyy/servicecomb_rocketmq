@@ -14,6 +14,8 @@
     <modules>
         <module>mall-endpoint-consumer</module>
         <module>mall-endpoint-provider</module>
+        <module>mall-endpoint-api-consumer</module>
+        <module>mall-endpoint-api-provider</module>
     </modules>
 
 

@@ -16,28 +16,28 @@
 ## limitations under the License.
 ## ---------------------------------------------------------------------------
 # spring boot configurations
-#server:
-#  port: 19093  # should be same with servicecomb.rest.address to use web container
+server:
+  port: 9093  # should be same with servicecomb.rest.address to use web container
 
 # override common configurations in common module
-servicecomb-config-order: 10
+servicecomb-config-order: 100
 
 APPLICATION_ID: mall-application
 service_description:
-  version: 0.0.1
+  version: 0.0.2
   name: mall-provider
-  environment: development
+#  environment: development
 
 servicecomb:
   service:
     registry:
       address: http://localhost:30100
       instance:
-        watch: false
+        watch: true
 
   rest:
     address: 0.0.0.0:9093 # should be same with server.port to use web container
-    
+
 spring:
   cloud:
     # RocketMQ 相关配置
@@ -45,6 +45,10 @@ spring:
       rocketmq:
         binder:
           name-server: 192.168.1.135:9876
-      bindings:
-        #自定义的名称 # test-group(一级分类)
-        mall-cart-group: {destination: mall-cart-group,content-type: application/json}
+
+        bindings:
+          mall-cart-group:
+            producer:
+              transactional: true
+              group: mall-cart-group
+

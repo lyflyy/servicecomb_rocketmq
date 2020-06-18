@@ -1,14 +1,13 @@
 package com.uyibai.servicecomb.mall;
 
+import org.apache.servicecomb.provider.pojo.RpcSchema;
 import org.apache.servicecomb.provider.rest.common.RestSchema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @Description: @TODO
@@ -18,7 +17,7 @@ import java.util.HashMap;
  **/
 @RestSchema(schemaId = "cart-consumer")
 @RequestMapping(path = "/")
-public class CartEndpoint {
+public class CartEndpoint extends AbstractBaseController implements ICartEndpoint {
 	
 	@Autowired
 	private CartService cartService;
@@ -27,19 +26,23 @@ public class CartEndpoint {
 	 * 查看购物车（查看consumer的购物车信息）
 	 * @return
 	 */
+	@Override
 	@GetMapping(path = "list", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Object list() {
-		return cartService.list();
+	public Result<List<Cart>> list() {
+		return ok(cartService.list());
 	}
 	
 	/**
 	 * 商品添加至购物车（consumer将商品添加至购物车）
+	 * 四件商品支付的时候会失败
+	 * 四件一下商品支付会成功
 	 * @param name
 	 * @return
 	 */
+	@Override
 	@GetMapping(path = "save", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Object save(@RequestParam(name = "name") String name) {
-		return cartService.add(name);
+	public Result<List<Cart>> save(@RequestParam(name = "name") String name) {
+		return ok(cartService.add(name));
 	}
 	
 }

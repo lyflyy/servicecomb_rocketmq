@@ -19,18 +19,25 @@ public class CartServiceImpl implements CartService{
 	private CartMapper cartMapper;
 	
 	@Override
-	public Cart add(String obj) {
+	public List<Cart> add(String obj) {
 		System.out.println("保存商品");
 		Cart cart = new Cart();
 		cart.setName(obj);
 		cartMapper.insert(cart);
-		return cart;
-		
+		return list();
 	}
+	
 	
 	@Override
 	public List<Cart> list() {
 		return cartMapper.selectList(null);
 	}
+	
+	@Override
+	public List<Cart> clear() {
+		cartMapper.delete(null);
+		return list();
+	}
+	
 	
 }

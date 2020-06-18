@@ -2,8 +2,10 @@ package com.uyibai.servicecomb.mall;
 
 
 import org.apache.servicecomb.springboot2.starter.EnableServiceComb;
-import org.springframework.boot.SpringApplication;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 
 /**
@@ -14,13 +16,16 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
  **/
 @SpringBootApplication
 @EnableServiceComb
-@EnableBinding({OrderProduce.class})
-public class MainClass {
+@EnableBinding(CartConsumer.class)
+@MapperScan(basePackages = "com.uyibai.servicecomb.mall.mapper")
+public class ConsumerMainClass {
 	public static void main(String[] args) throws Exception {
 		try {
-			SpringApplication.run(MainClass.class, args);
+//			SpringApplication.run(ConsumerMainClass.class, args);
+			new SpringApplicationBuilder().web(WebApplicationType.NONE).sources(ConsumerMainClass.class).run(args);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 }
