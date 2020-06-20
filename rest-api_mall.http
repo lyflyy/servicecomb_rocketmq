@@ -1,0 +1,33 @@
+### 从网关调用查询购物车列表
+GET http://localhost:9090/api/mall-consumer/list
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-06-18T112157.200.json
+
+
+### 从网关调用 添加商品到购物车 - 商品数量超过4之后 半消息会提交失败无法支付，超过5之后
+GET http://localhost:9090/api/mall-consumer/save?name=2bbbb
+Accept: */*
+Cache-Control: no-cache
+
+### 从网关调用结账 - 执行成功后购物车应该清空
+GET http://localhost:9090/api/mall-provider/pay?num=1
+Accept: */*
+Cache-Control: no-cache
+
+### 直接调用consumer 查询购物车列表
+GET http://localhost:9094/list
+Accept: */*
+Cache-Control: no-cache
+
+### 直接调用consumer 添加商品到购物车
+GET http://localhost:9094/save?name=2bbbb
+Accept: */*
+Cache-Control: no-cache
+
+### 直接调用provider 支付商品，商品数量小于4的时候可以正常清空购物车
+GET http://localhost:9093/pay?num=1
+Accept: */*
+Cache-Control: no-cache
+
